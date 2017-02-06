@@ -14,13 +14,15 @@
 @end
 @implementation JHChart
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        _xDescTextFontSize = _yDescTextFontSize = 8.0;
+        self.xAndYLineColor = [UIColor darkGrayColor];
+        self.contentInsets = UIEdgeInsetsMake(10, 20, 10, 10);
+        self.chartOrigin = P_M(self.contentInsets.left, CGRectGetHeight(self.frame) - self.contentInsets.bottom);
+    }
+    return self;
 }
-*/
 
 -(void)showAnimation{
     
@@ -30,6 +32,8 @@
 -(void)clear{
     
 }
+
+
 
 
 /**
@@ -50,13 +54,13 @@
     CGContextAddLineToPoint(context, end.x, end.y);
     
     
-    CGContextSetLineWidth(context, 0.5);
+    CGContextSetLineWidth(context, 0.3);
     
     
     [color setStroke];
     
     if (isDotted) {
-        CGFloat ss[] = {0.5,2};
+        CGFloat ss[] = {1.5,2};
         
         CGContextSetLineDash(context, 0, ss, 2);
     }
@@ -152,7 +156,7 @@
 - (CGSize)sizeOfStringWithMaxSize:(CGSize)maxSize textFont:(CGFloat)fontSize aimString:(NSString *)aimString{
     
     
-    return [aimString boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]} context:nil].size;
+    return [[NSString stringWithFormat:@"%@",aimString] boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]} context:nil].size;
     
 }
 

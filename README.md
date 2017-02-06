@@ -1,4 +1,11 @@
-#JHChart(最新版本1.0.3)
+#JHChart(最新版本1.1.0)
+
+[![CI Status](http://img.shields.io/travis/简豪/JHChart.svg?style=flat)](https://travis-ci.org/简豪/JHChart)
+[![Version](https://img.shields.io/cocoapods/v/JHChart.svg?style=flat)](http://cocoapods.org/pods/JHChart)
+[![License](https://img.shields.io/cocoapods/l/JHChart.svg?style=flat)](http://cocoapods.org/pods/JHChart)
+[![Platform](https://img.shields.io/cocoapods/p/JHChart.svg?style=flat)](http://cocoapods.org/pods/JHChart)
+
+![some nice chart](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/JHChart.png)
 
 Well, I admit that there are a lot of other graphics libraries on the GitHub. But, because of my project needs, most of the library can not fully meet my needs. So I took out a little free time, I wrote a chart library. Initial plan to write only a few lines (my project needs), did not expect the release to GitHub after a number of friends told me that they need more styles.I don't want to tell them I just intend to do it here, so it's a bit of a development to the present 0.1.1 version, basically meet the needs of users before. Of course, the follow-up will continue to update, add more features.
 
@@ -8,7 +15,6 @@ Well, I admit that there are a lot of other graphics libraries on the GitHub. Bu
 A simple, feature rich and customizable iOS development chart library.
 [Click here](http://www.jianshu.com/p/299066102982) if you want to see the usage of the Chinese description.
 
-![some nice chart](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/look.gif) 
 
 ##Requirement
 * Xcode 7.0+
@@ -65,8 +71,18 @@ pod 'JHChart','~>1.0.3'
 
 
 Actual effect chart：
+- first quardrant.
+![折线图1](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/折线图demo1.png)    
+- first and second quardrant.
+![折线图2](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/折线图demo2.png)
+- first and fouth quardrant.
+![折线图2](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/折线图demo3.png)  
 
-![折线图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/折线图demo.png)     
+*** 
+### JHScatterChart
+![折线图1](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/散点图demo1.png) 
+
+
 
 ***
 ### JHColumnChart
@@ -79,7 +95,8 @@ Actual effect chart：
     @[@12,@15,@20],
     @[@22,@15,@20],
     @[@12,@5,@40],
-    @[@2,@15,@20]
+    @[@2,@15,@20],
+    @[@20,@15,@26]
     ];
     /*       This point represents the distance from the lower left corner of the origin.         */
     column.originSize = CGPointMake(30, 30);
@@ -88,23 +105,29 @@ Actual effect chart：
     /*        Column width         */
     column.columnWidth = 40;
     /*        X, Y axis font color         */
-    column.drawTextColorForX_Y = [UIColor greenColor];
+    column.drawTextColorForX_Y = [UIColor whiteColor];
     /*        X, Y axis line color         */
-    column.colorForXYLine = [UIColor greenColor];
+    column.colorForXYLine = [UIColor blackColor];
     /*    Each module of the color array, such as the A class of the language performance of the color is red, the color of the math achievement is green     */
     column.columnBGcolorsArr = @[[UIColor redColor],[UIColor greenColor],[UIColor orangeColor]];
     /*        Module prompt         */
-    column.xShowInfoText = @[@"A班级",@"B班级",@"C班级",@"D班级"];
+    column.xShowInfoText = @[@"A班级",@"B班级",@"C班级",@"D班级",@"E班级"];
     /*       Start animation        */
     [column showAnimation];
     [self.view addSubview:column];
 
 Actual effect chart：
 
-![柱状图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/柱状图demo.gif)
+- ColumnChart for group
+![柱状图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/柱状图demo1.png)
+- Nomal ColumnChart
+![柱状图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/柱状图demo2.png)
+- ColumnChart with lineChart
+![柱状图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/柱状图demo3.png)
 ***
+
 ## JHPieChart
-**Description: JHPieChart can be based on your data source and view size settings, automatically generate the appropriate size, and there is a hint of animation pie chart. When you click on a piece of pie chart, the animation shows the current cake block information.**
+**Description: JHPieChart can be based on your data source and view size settings, automatically generate the appropriate size, and there is a hint of animation pie chart. When you click on a piece of pie chart, the animation shows the current cake block information.** 
 
     JHPieChart *pie = [[JHPieChart alloc] initWithFrame:CGRectMake(100, 100, 321, 421)];
     pie.center = CGPointMake(CGRectGetMaxX(self.view.frame)/2, CGRectGetMaxY(self.view.frame)/2);
@@ -119,16 +142,15 @@ Actual effect chart：
     /*        Start animation         */
     [pie showAnimation];
 
-Actual effect chart：
-
-![饼状图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/饼状图demo.gif)
+Actual effect chart： 
+![饼状图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/饼状图demo1.png)
 ***
 ## JHRingChart
 **Description: JHRingChart according to your data source, automatically calculate the proportion of relevant data, the animation shows a ring graph, and from each loop to elicit relevant information tips**
 
     JHRingChart *ring = [[JHRingChart alloc] initWithFrame:CGRectMake(0, 100, k_MainBoundsWidth, k_MainBoundsWidth)];
     /*        background color         */
-    ring.backgroundColor = [UIColor blackColor];
+    ring.backgroundColor = [UIColor whiteColor];
     /*        Data source array, only the incoming value, the corresponding ratio will be automatically calculated         */
     ring.valueDataArr = @[@"0.5",@"5",@"2",@"10",@"6"];
     /*         Width of ring graph        */
@@ -141,7 +163,7 @@ Actual effect chart：
 
 Actual effect chart：
 
-![环形图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/环状图demo.gif)
+![环形图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/环状图demo1.png)
 ***
 ## JHTableChart
 **Description: JHTableChart for static drawing style changing table view, all the cell display style depends on the data source, do not need a special treatment of a cell, is very flexible and easy to use**
@@ -156,15 +178,15 @@ Actual effect chart：
     /*        Text color of the table body         */
     table.bodyTextColor = [UIColor redColor];
     /*        Minimum grid height         */
-    table.minHeightItems = 40;
+    table.minHeightItems = 35;
     /*        Table line color         */
     table.lineColor = [UIColor orangeColor];
+    
+    table.backgroundColor = [UIColor whiteColor];
     /*       Data source array, in accordance with the data from top to bottom that each line of data, if one of the rows of a column in a number of cells, can be stored in an array of         */
     table.dataArr = @[
     @[@"2.4L优越版",@"2016皓白标准漆蓝棕",@[@"鸽子白",@"鹅黄",@"炫彩绿"],@[@"4"]],
-    @[@"2.4专业版",@[@"2016皓白标准漆蓝棕",@"2016晶黑珠光漆黑",@"2016流沙金珠光漆蓝棕"],@[@"鸽子白",@"鹅黄",@"炫彩绿",@"彩虹多样色"],@[@"4",@"5",@"3"]],
-    @[@"2.4豪华版",@[@"4",@"3",@"2"]],
-    @[@"2.4旗舰版"]
+    @[@"2.4专业版",@[@"2016皓白标准漆蓝棕",@"2016晶黑珠光漆黑",@"2016流沙金珠光漆蓝棕"],@[@"鸽子白",@"鹅黄",@"炫彩绿",@"彩虹多样色"],@[@"4",@"5",@"3"]]
     ];
     /*        show                            */
     [table showAnimation];
@@ -174,7 +196,7 @@ Actual effect chart：
 
 Actual effect chart：
 
-![表格图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/table1.png)
+![表格图](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/表格demo1.png)
 ***
 ### JHRadarChart
 **Description: JHRadarChart can according to your incoming data description and calculation of drawing data, and pruning, the advantages and disadvantages of each attribute can reflect the image of the**
@@ -203,7 +225,7 @@ Actual effect chart：
 
 Actual effect chart：
 
-![some nice chart](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/雷达图demo.png) 
+![some nice chart](https://raw.githubusercontent.com/China131/JHChart/master/JHChartDemo/GIFResource/雷达图demo1.png) 
 
 ### 联系方式
 * 邮箱：JHSilktree@foxmail.com
